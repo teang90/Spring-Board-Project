@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper">
+	
+
+	<!-- insert -->
+	<!-- 회원가입 -->
+	<insert id="member_add" parameterType="com.ict.mybatis.Member">
+		insert into member values(member_seq.nextval,#{member_id},#{member_pwd},#{member_name},#{member_email},0,0,sysdate)
+	</insert>
+	
+	<!-- 게시글 작성하기 -->
+	<insert id="board_insert" parameterType="com.ict.mybatis.Board">
+		insert into board values(board_seq.nextval,#{board_category},#{board_subcategory},#{board_id},#{board_title},#{board_content},0,0,sysdate)
+	</insert>
+	
+	<!-- 게시글에 답글달기 -->
+	<insert id="answer_insert" parameterType="com.ict.mybatis.Answer">
+		insert into answer values(answer_seq.nextval,#{answer_id},#{answer_content},answer_seq.nextval,0,0,0,sysdate,#{answer_bd_pk})
+	</insert>
+	
+	<!-- 게시글의 답글에 답글 달기 -->
+	<insert id="answer_insert_insert" parameterType="com.ict.mybatis.Answer">
+		insert into answer values(answer_seq.nextval,#{answer_id},#{answer_content},#{answer_group},#{answer_lev}+1,#{answer_step}+1,0,sysdate,#{answer_bd_pk})
+	</insert>
+	
+	
+	
+	<!-- update -->
+	<!-- 조회수 업뎃 -->
+	<update id="oneboard_hitup" parameterType="Map">
+		update board set board_hit = #{board_hit}+1 where board_pk = #{board_pk}
+	</update>
+	
+	<!-- 특정 게시글의 답글을 추천 -->
+	<update id="answer_recUp" parameterType="com.ict.mybatis.Answer">
+		update answer set answer_recommendation = #{answer_recommendation}+1 where answer_pk=#{answer_pk}
+	</update>
+
+	<!-- 특정 게시글의 답글을 반대 -->
+	<update id="answer_recDown" parameterType="com.ict.mybatis.Answer">
+		update answer set answer_recommendation = #{answer_recommendation}-1 where answer_pk=#{answer_pk}
+	</update>
+	
+	
+	
+	<!-- select -->
+	<!-- 추천수 30이상의 게시글 출력(홈에 뿌리기 위해서) -->
+	<select id="popular_list" resultType="com.ict.mybatis.Board">
+		select * from board where board_recommendation > 29
+	</select>
+	
+	<!-- 아이디, 비번을 Map으로 만들어서 로그인하기 -->
+	<select id="member_login" parameterType="Map" resultType="com.ict.mybatis.Member">
+		select * from member where member_id=#{member_id} and member_pwd=#{member_pwd}
+	</select>
+	
+	<!-- 카테고리별 리스트 출력 -->
+	<select id="board_list" parameterType="String" resultType="com.ict.mybatis.Board">
+		select * from board where board_category=#{board_category} order by board_date desc
+	</select>
+	
+	<!-- 게시글 상세보기 -->
+	<select id="oneboard" parameterType="String" resultType="com.ict.mybatis.Board" >
+		select * from board where board_pk=#{board_pk} order by board_date desc
+	</select>
+	
+	<!-- 답글 리스트 -->
+	<select id="answer_list" parameterType="String" resultType="com.ict.mybatis.Answer">
+		select * from answer where answer_bd_pk=#{answer_bd_pk} order by answer_date
+	</select>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="idcheck" parameterType="String" resultType="com.ict.mybatis.Member">
+		select * from member where member_id=#{member_id}
+	</select>
+	
+	
+	
+	<!-- <select id="login" resultType="com.ict.mybatis.VO" parameterType="Map">
+		select * from member where id=#{id} and pw=#{pw}
+	</select> -->
+	
+	<!-- 페이지 처리에 따른 게시물 추출 -->
+	<!-- <select id="list" resultType="com.ict.mybatis.BBS_t" parameterType="Map">
+		select * from
+		(select rownum r_num, a.* from
+		(select * from bbs_t order by b_idx) a)
+		where r_num between #{begin} and #{end}
+	</select>
+	
+	<select id="onelist" parameterType="String" resultType="com.ict.mybatis.BBS_t">
+		select * from bbs_t where b_idx=#{b_idx}
+	</select>
+	
+	<select id="cnt_list" resultType="int">
+		select count(*) from bbs_t 
+	</select>
+	
+	<insert id="bbs_insert" parameterType="com.ict.mybatis.BBS_t">
+		insert into bbs_t values(bbs_t_seq.nextval,#{subject},#{writer},#{content},#{file_name},#{pwd},sysdate,#{ip},0)
+	</insert>
+		
+	<update id="update" parameterType="com.ict.mybatis.BBS_t">
+		update bbs_t set subject=#{subject}, writer=#{writer}, content=#{content} where b_idx= #{b_idx}
+	</update>
+	
+	<update id="hit_up" parameterType="com.ict.mybatis.BBS_t">
+		update bbs_t set hit=#{hit} where b_idx = #{b_idx}
+	</update>
+	
+	<select id="comment_list" resultType="com.ict.mybatis.CVO" parameterType="String">
+		select * from comment_t where b_idx= #{b_idx}
+	</select>
+	
+	<insert id="cmt_ist" parameterType="com.ict.mybatis.CVO">
+		insert into comment_t values(comment_t_seq.nextval,#{writer},#{content},#{pwd},sysdate,#{ip},#{b_idx})
+	</insert>
+	
+	<update id="cmt_update" parameterType="com.ict.mybatis.CVO">
+		update comment_t set writer=#{writer}, content=#{content} where c_idx=#{c_idx}
+	</update>
+	
+	<update id="cmt_del" parameterType="com.ict.mybatis.CVO">
+		delete from comment_t where c_idx=#{c_idx}
+	</update>
+	 -->
+	
+	
+<!--
+ 	<insert id="insert" parameterType="com.ict.mybatis.VO">
+		insert into guestbook2 values(guestbook2_seq.nextval,#{name},#{subject},#{content},#{email},#{pwd},#{filename},sysdate)
+	</insert>
+	
+ 	<select id="onelist" parameterType="String" resultType="com.ict.mybatis.VO">
+		select * from guestbook2 where idx=#{idx}
+	</select>
+	
+	<update id="update" parameterType="com.ict.mybatis.VO">
+		update guestbook2 set name=#{name}, subject=#{subject}, content=#{content} where idx=#{idx}
+	</update> -->
+	
+<!--
+	
+	<delete id="delete" parameterType="String">
+		delete from guestbook2 where id=#{id}
+	</delete>
+	
+	
+	 -->
+</mapper>
+
+
