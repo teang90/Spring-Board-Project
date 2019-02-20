@@ -5,7 +5,7 @@ public class Answer {
 	// 3개, 6개
 	private String answer_id, answer_content, answer_date; 
 	
-	private int answer_pk, answer_group, answer_lev, answer_step, answer_recommendation, answer_bd_pk ;
+	private int answer_pk, answer_group, answer_lev, answer_recommendation, answer_bd_pk ;
 	
 	public String getAnswer_id() {
 		return answer_id;
@@ -42,12 +42,6 @@ public class Answer {
 	}
 	public void setAnswer_lev(int answer_lev) {
 		this.answer_lev = answer_lev;
-	}
-	public int getAnswer_step() {
-		return answer_step;
-	}
-	public void setAnswer_step(int answer_step) {
-		this.answer_step = answer_step;
 	}
 	public int getAnswer_recommendation() {
 		return answer_recommendation;

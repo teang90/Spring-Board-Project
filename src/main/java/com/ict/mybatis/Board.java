@@ -1,8 +1,8 @@
 package com.ict.mybatis;
 
 public class Board {
-	// 9개
-	private String board_category, board_subcategory, board_id, board_title, board_content, board_date;
+
+	private String board_category, board_id, board_title, board_content, board_date;
 	private int board_pk, board_hit, board_recommendation ; //3
 	
 	public String getBoard_category() {
@@ -11,12 +11,7 @@ public class Board {
 	public void setBoard_category(String board_category) {
 		this.board_category = board_category;
 	}
-	public String getBoard_subcategory() {
-		return board_subcategory;
-	}
-	public void setBoard_subcategory(String board_subcategory) {
-		this.board_subcategory = board_subcategory;
-	}
+	
 	public String getBoard_id() {
 		return board_id;
 	}

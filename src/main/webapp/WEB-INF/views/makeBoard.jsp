@@ -2,10 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-	//String member_id = request.getParameter("member_id");
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +22,9 @@ background-color: #eee;
 form{
 	margin-bottom: 5%;
 }
-h3{
-	margin-top: 5%;
-	margin-bottom: 3%;
-
+#h3{
+	margin-top: 100px;
+	margin-bottom: 25px;
 }
 #savebutton{
 	text-align: center;
@@ -69,7 +64,6 @@ $(function() {
 		
 		//id가 smarteditor인 textarea에 에디터에서 대입
 		editor_object.getById["smartEditor"].exec("UPDATE_CONTENTS_FIELD", []);
-		/* $("#frm").action="/1001_JSP_Project/Controller?cmd=editor&editor_object="+editor_object; */
 		$("#frm").submit();
 	});
 }); 
@@ -83,7 +77,8 @@ $(function() {
 	 	<jsp:include page="include/navigation.jsp?member_id=${member_id}" />
  	</c:if>
 	
-	<h3 style="text-align: center;">당신의 의견을 말해주세요</h3>
+	<h3 id="h3" style="text-align: center;" >글쓰기</h3>
+	
 	<hr>
 	
 <form action="write.do" method="post" id="frm" class="container">
@@ -91,17 +86,16 @@ $(function() {
 	<div class="form-group row">
 	<label for="colFormLabel" class=" col-form-label">게시판 종류</label>
 	<select name="board_category" id="category" class="form-control" autofocus required>	
-		<option value="weather">날씨 게시판</option>
-		<option value="music">음악 게시판</option>
-		<option value="freedom">자유 게시판</option>
+		<option value="free">자유 게시판</option>
 	</select>
 	</div>
 	
+	<!-- <input type="hidden" name="board_subcategory" value=""> -->
 	
-	서브 카테고리
+<%-- 	서브 카테고리
 	<select name="board_subcategory">	
 		<option value="default" >준비중입니다.</option>
-	</select>
+	</select> --%>
 	
 	<div class="form-group row">
 		<label for="colFormLabel" class=" col-form-label">글쓴이</label>
@@ -120,8 +114,14 @@ $(function() {
 		<textarea name="board_content" id="smartEditor" rows="10" cols="100" style="width:800px; height:500px;"></textarea>
 	</div>
 	
+	<!-- 
 	<div class="form-group row">
-		<input type="submit" class="btn btn-primary" id="savebutton" value="완료">
+		<label for="colFormLabel" class="col-form-label">파일첨부</label>
+		<input type="file" class="form-control" name="board_file" style="width: 700px" >		
+	</div>	 -->
+	
+	<div style="text-align: center; margin-top: 50px; ">
+		<input type="submit" class="btn btn-primary" id="savebutton" value="완료" style="width: 200px;">
 	</div>
 	</form>
 	

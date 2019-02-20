@@ -1,4 +1,4 @@
-package com.ict.mybatis;
+package com.ict.service;
 
 import org.springframework.stereotype.Service;
 
@@ -7,7 +7,7 @@ public class Page {
 	
 	private int cPage ; //현재 페이지
 	private int numPerPage ; // 페에지당 담을 게시물의 수
-	private int PagePerBlock ; // 블럭당 담을 페이지의 수
+	private int pagePerBlock ; // 블럭당 담을 페이지의 수
 	private int totalRecord ; // 전체 게시물
 	private int totalPage ; // 총 페이지 개수
 	private int beginPage ; // 시작 페이지
@@ -25,11 +25,12 @@ public class Page {
 	public void setNumPerPage(int numPerPage) {
 		this.numPerPage = numPerPage;
 	}
+
 	public int getPagePerBlock() {
-		return PagePerBlock;
+		return pagePerBlock;
 	}
 	public void setPagePerBlock(int pagePerBlock) {
-		this.PagePerBlock = pagePerBlock;
+		this.pagePerBlock = pagePerBlock;
 	}
 	public int getTotalRecord() {
 		return totalRecord;

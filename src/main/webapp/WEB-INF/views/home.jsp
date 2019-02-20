@@ -9,13 +9,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<meta property="og:type" content="website" >
-<meta property="og:url" content="http://localhost:8090/controller/" >
-<meta property="og:title" content="스프링 게시판 홈페이지" >
-<meta property="og:description" content="스프링은 봄을 마음으로 봄" >
-<meta property="og:image" content="${pageContext.request.contextPath}/resources/images/boundary.jpg" >
-
-
 <title>[TAE-YOUNG JEONG] PROJECT</title>
 
 <!-- Bootstrap core CSS -->
@@ -28,6 +21,20 @@
 
 <!-- Custom styles for this template -->
 <link href="${pageContext.request.contextPath}/resources/bootstraps/template/css/one-page-wonder.min.css" rel="stylesheet">
+
+<style type="text/css">
+	.shadow{
+		box-shadow: 2px 2px 0px 1px #ccc !important;
+		margin-bottom: 15px;
+		margin-right: 25px;
+		margin-left: 25px;
+	}
+	
+	.spacing{
+		margin-bottom: 20px;
+		text-align: center;
+	}
+</style>
 
 <!-- Bootstrap core JavaScript -->
 <script src="${pageContext.request.contextPath}/resources/bootstraps/template/vendor/jquery/jquery.min.js"></script>
@@ -42,14 +49,12 @@
  	<c:if test="${!empty member_id}">
 	 	<jsp:include page="include/navigation.jsp?member_id=${member_id}" />
  	</c:if>
- 	
 	<!-- 본문 내용  -->
     <header class="masthead text-center text-white">
       <div class="masthead-content">
         <div class="container">
-          <h1 class="masthead-heading mb-0">One Page Wonder</h1>
-          <h2 class="masthead-subheading mb-0">Will Rock Your Socks Off</h2>
-          <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+          <h1 class="masthead-heading mb-0">Welcome to Taeyoung's Project</h1>
+          <%-- <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a> --%>
         </div>
       </div>
       <div class="bg-circle-1 bg-circle"></div>
@@ -61,80 +66,63 @@
     <section>
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6">
+         
+       	<div class="col-lg-6"> 
             <div class="p-5">
-              <img class="img-fluid rounded-circle" src="resources/bootstraps/template/img/01.jpg" alt="">
+            <img class="img-fluid rounded" 
+            src="resources/images/JeongTaeYoung.jpg" alt="Jeong_img" 
+            style="margin-left: 25%">
             </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="p-5">
-              <h2 class="display-4">We salute you!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-
-	<hr>
-	
-    <section>
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="p-5">
-              <img class="img-fluid rounded-circle" src="resources/bootstraps/template/img/02.jpg" alt="">
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="p-5">
-              <h2 class="display-4">We salute you!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-            </div>
-          </div>
+        
+        <div class="col-lg-6">
+			<div class="p-5">
+	            <h2 class="display-4">환영합니다.</h2>
+	            <br>
+	            <div>- CRUD 기능을 목적으로 간단한 게시판을 제작했습니다.</div>
+				<div>- 제작기간:&nbsp; 3주</div>
+				<div>- 참여인원:&nbsp; 1명(본인)</div>
+				<br>				
+				<div>- 테스트 아이디:&nbsp; <strong>visitor</strong></div>
+				<div>- 테스트 비밀번호:&nbsp;  <strong>v1</strong></div>
+          	</div>
+        </div>
+        
         </div>
       </div>
     </section>
     
-    <hr>
-   
-    <section>
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="p-5">
-              <img class="img-fluid rounded-circle" src="resources/bootstraps/template/img/03.jpg" alt="">
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="p-5">
-              <h2 class="display-4">We salute you!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-            </div>
+	<hr style="margin-bottom: 10px; border: 1px solid rgba(0,0,0,.1); ">    
+	
+    <div class="container">
+		
+    	<!-- Three columns of text below the carousel -->
+        <div class="row">
+
+          <div class="col-lg-12 spacing">
+			
+			<p style="text-align: center; font-size: 15px; margin-bottom: 20px; "><b style="font-size: 20px;">프로젝트</b>를 만들면서 사용한 언어 및 툴 등</p>
+            <img class="rounded-circle shadow" src="resources/external_image/PLanguage_img/Java.png" alt="java_img">
+        
+            <img class="rounded-circle shadow" src="resources/external_image/PLanguage_img/JS.png" alt="" >
+        
+            <img class="rounded-circle shadow" src="resources/external_image/PLanguage_img/spring.png" alt="" ><br>
+        
+            <img class="rounded-circle shadow" src="resources/external_image/PLanguage_img/Mybatis2.jpg" alt="" style="width: 75px; height: 75px;" >
+        
+            <img class="rounded-circle shadow" src="resources/external_image/PLanguage_img/oracle3.png" alt="" style="width:75px;" >
+        
+            <img class="rounded-circle shadow" src="resources/external_image/PLanguage_img/tomcat.png" alt="" ><br>
+
+            <img class="rounded-circle shadow" src="resources/external_image/PLanguage_img/jqeury.png" alt="" style="width: 75px; height: 75px;" >
+
+            <img class="rounded-circle shadow" src="resources/external_image/PLanguage_img/bootstrap.jpg" alt="" >
+
+            <img class="rounded-circle shadow" src="resources/external_image/PLanguage_img/ajax.jpg" alt=""  >
           </div>
         </div>
       </div>
-    </section>
-	<hr>
 	
-	
-	<!-- 템플릿 받아서 거기서 게시판으로 이동 페이지 만들어서 해당 게시판으로 이동해서 글쓰기해서 여기
-	인기글 안정적으로 잘 뜨는지 확인하기 -->
-	
-	<!-- 하단 부에  추천수 높은 인기글을 목록화 할거임 
-	1. 카테고리 상관없이 조회수 높은 녀석들을 가져오자(추천수 30개 이상)
-	
-	-->
-	<c:if test="${empty board_list}">
-		<p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-	</c:if>
-	<c:if test="${!empty board_list}">
-		<p style="text-align: center;">글 생성한 경우</p>
-	</c:if>
-	
-	    
-   
-   
     <!-- Footer -->
 	<jsp:include page="include/footer.jsp" />
 	<br>

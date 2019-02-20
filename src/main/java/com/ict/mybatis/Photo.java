@@ -12,10 +12,6 @@ public class Photo {
 	
 	//콜백함수
 	private String callback_func;
-	
-	
-	
-	
 
 	public MultipartFile getFiledate() {
 		return filedate;

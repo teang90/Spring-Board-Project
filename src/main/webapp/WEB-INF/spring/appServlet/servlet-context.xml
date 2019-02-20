@@ -21,8 +21,27 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 파일 업로드로 들어오는 데이터를 처리하는 객체 -->
+	<!-- <beans:bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760" /> 10mb 제한
+	</beans:bean> -->
+ 	
+	<!-- 업로드된 파일의 저장 위치 지정 -->
+ 	<!-- <beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="D:\\SpringUploadRepo\\upload"></beans:constructor-arg>
+	</beans:bean> -->
+	
+	<!-- upload -->
+	<!--
+ 	<bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1048576000" />
+	</bean>
+	 -->
+	
+
+	
 	<context:component-scan base-package="com.ict.*" />
-	
-	
 	
 </beans:beans>
