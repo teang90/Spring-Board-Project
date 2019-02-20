@@ -34,7 +34,7 @@
 				data: $("#member_id").val(),
 				type: "post",
 				dataType: "text",
-				contentType: "application/text; charset=utf-8", //이거 필요한가? 모르겠네? 일단 넣기
+				contentType: "application/text; charset=utf-8",
 				success: function(data) { //data는 스트링임...
 					if (data=='1') {
 						alert($("#member_id").val()+"는 이미 존재하는 아이디입니다.\n다른 아이디를 입력하십시오.");
